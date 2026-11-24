@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIGICAM ARCHIVE — Personal Photo Collection</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="#">DIGICAM<span>.</span></a>
+      <div class="top-meta">PERSONAL PHOTO ARCHIVE <span>●</span> VOL. 002</div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div class="eyebrow">SHOT ON CANON POWERSHOT A3400 IS</div>
+        <h1>Little moments,<br><em>kept forever.</em></h1>
+        <p class="intro-copy">A personal archive of everyday photographs.<br>Collected, one frame at a time.</p>
+        <div class="intro-actions">
+          <label class="button button-dark" for="photoInput">＋ ADD PHOTOS</label>
+          <button class="button button-light" id="newAlbumBtn" type="button">＋ NEW ALBUM</button>
+        </div>
+        <div class="upload-controls">
+          <label for="uploadAlbum">UPLOAD TO ALBUM</label>
+          <select id="uploadAlbum" aria-label="Pilih album tujuan upload">
+            <option value="Unsorted">Unsorted</option>
+          </select>
+          <input id="photoInput" type="file" accept="image/*" multiple hidden>
+        </div>
+        <p class="hint">Pilih album tujuan sebelum menekan ADD PHOTOS. Foto dari Canon dapat disalin dari folder DCIM.</p>
+      </section>
+
+      <section class="toolbar">
+        <div>
+          <div class="section-kicker">THE COLLECTION</div>
+          <h2>Your photographs <span id="photoCount">(0)</span></h2>
+        </div>
+        <div class="filters">
+          <input id="searchInput" type="search" placeholder="Search photos..." aria-label="Cari foto">
+          <select id="albumFilter" aria-label="Filter album"><option value="all">All albums</option></select>
+        </div>
+      </section>
+
+      <section class="album-strip">
+        <div class="album-heading"><span>ALBUMS</span><button id="manageAlbumsBtn" class="text-button" type="button">MANAGE</button></div>
+        <div id="albumList" class="album-list"></div>
+      </section>
+
+      <section id="gallery" class="gallery" aria-live="polite">
+        <div class="empty-state">
+          <div class="empty-icon">▧</div>
+          <h3>Your archive is waiting.</h3>
+          <p>Upload your first photos to start collecting memories.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>DIGICAM ARCHIVE © 2026</span>
+      <span>MADE FOR EVERYDAY MEMORIES · CANON A3400 IS</span>
+    </footer>
+  </div>
+
+  <dialog id="albumDialog">
+    <form id="albumForm">
+      <div class="dialog-top"><span>NEW COLLECTION</span><button class="x-button" id="closeAlbumDialog" type="button" aria-label="Tutup">×</button></div>
+      <h3>Create an album</h3>
+      <label for="albumName">ALBUM NAME</label>
+      <input id="albumName" maxlength="32" placeholder="e.g. School days" required>
+      <div class="dialog-actions">
+        <button class="button button-light" id="cancelAlbum" type="button">CANCEL</button>
+        <button class="button button-dark" type="submit">CREATE ALBUM</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="photoDialog" class="photo-dialog">
+    <button class="x-button photo-close" id="closePhoto" aria-label="Tutup">×</button>
+    <img id="largePhoto" alt="Foto pilihan">
+    <div class="photo-info">
+      <div>
+        <div id="largeName" class="photo-name"></div>
+        <div id="largeAlbum" class="photo-sub"></div>
+      </div>
+      <div class="photo-actions">
+        <select id="movePhotoAlbum" aria-label="Pindahkan foto ke album"></select>
+        <button id="downloadLarge" class="button button-dark" type="button">↓ DOWNLOAD</button>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="manageDialog">
+    <form method="dialog">
+      <div class="dialog-top"><span>ALBUM MANAGER</span><button class="x-button" value="cancel" aria-label="Tutup">×</button></div>
+      <h3>Manage albums</h3>
+      <div id="manageAlbumList" class="manage-list"></div>
+      <p class="small-note">Menghapus album tidak menghapus foto; foto akan dipindahkan ke “Unsorted”.</p>
+      <div class="dialog-actions"><button class="button button-dark" value="cancel">DONE</button></div>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
